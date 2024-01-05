@@ -1,0 +1,76 @@
+.header-section {
+  background-color: #000000;
+  display: block;
+  width: 100%;
+  float: left;
+  padding: 10px 30px;
+  position: relative;
+  border-bottom: 2px solid #dac866;
+
+  .logo-section {
+    float: left;
+    display: block;
+    width: 140px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .auth-section {
+    float: right;
+    color: white;
+    width: 230px;
+    padding: 15px;
+    margin-right: 40px;
+
+    ul {
+      li {
+        list-style-type: none;
+        float: left;
+        margin-right: 20px;
+      }
+    }
+
+    &__menu {
+      transform: translate3d(-40px, 28px, 0px) !important;
+      padding: 30px;
+    }
+
+    a {
+      text-decoration: none;
+      color: #ffffff;
+    }
+
+    a.dropdown-item {
+      color: #000000;
+    }
+  }
+}
+
+@media screen and (min-width: 43.750em) {
+  /*----- Medium | 700px -----*/
+
+  .header-section {
+    padding: 10px 60px;
+  }
+}
+
+
+/*-------------------------------------------------------
+    Media Queries Implementation For Nike Site
+--------------------------------------------------------- */
+
+/*-------------------------------------------
+    Media Queries and Screen Sizes
+
+narrow:     em(320); // 20em, 320px
+small:      em(480); // 30em, 480px
+medium:     em(700); // 43.750em, 700px
+ipad:       em(768); // 48em, 768px
+large:      em(960); // 60em, 960px
+wide:       em(1080); // 67.500em, 1080px
+wider:      em(1200); // 75em, 1200px
+huge:       em(1600); // 100em, 1600px
+
+-------------------------------------------*/

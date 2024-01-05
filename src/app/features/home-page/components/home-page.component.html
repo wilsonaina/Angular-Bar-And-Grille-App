@@ -1,0 +1,135 @@
+<section class="main">
+  <section class="hero-section">
+  </section>
+  <section class="main-section">
+    <section *ngIf="displaySuccessAlert" class="alert-section">
+      <div class="alert alert-success fade show" role="alert">
+        {{ cartProductTitle }} added to your cart
+        <button type="button" (click)="toggleDisplaySuccessAlert()" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </section>
+    <div class="container">
+      <div class="row">
+        <div class="nav-section col-sm-8">
+          <div class="cart-badge-section">
+            <span *ngIf="cartItemCount$">{{ cartItemCount$ | async }}</span>
+          </div>
+          <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="entree-tab" data-toggle="pill" href="#entree" role="tab" aria-controls="entree" aria-selected="true">ENTREE</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="sides-tab" data-toggle="pill" href="#sides" role="tab" aria-controls="sides" aria-selected="false">SIDES</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="drinks-tab" data-toggle="pill" href="#drinks" role="tab" aria-controls="drinks" aria-selected="false">DRINKS</a>
+            </li>
+          </ul>
+          <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active entree-section" id="entree" role="tabpanel" aria-labelledby="entree-tab">
+              <ng-container *ngFor="let entree of entrees">
+                <div class="card">
+                  <img class="card-img-top" src="{{ entree.image }}" alt="Card image cap">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ entree.title }}</h5>
+                    <p class="card-text">{{ entree.description }}</p>
+                  </div>
+                  <div class="card-footer">
+                    <h6 class="card-text price">Price: {{ entree.displayPrice | currency }}</h6>
+                    <div class="product-cta-section">
+                      <button class="btn btn-sm purple" (click)="addProductToCart(entree)">ADD TO ORDER</button>
+                      <button class="btn btn-sm outline-black">CUSTOMIZE</button>
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+            <div class="tab-pane fade" id="sides" role="tabpanel" aria-labelledby="sides-tab">
+              <h3>Sides Section</h3>
+              <ng-container *ngFor="let side of sides">
+                <div class="card">
+                  <img class="card-img-top" src="{{ side.image }}" alt="Card image cap">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ side.title }}</h5>
+                    <p class="card-text">{{ side.description }}</p>
+                  </div>
+                  <div class="card-footer">
+                    <h6 class="card-text price">Price: {{ side.displayPrice | currency }}</h6>
+                    <div class="product-cta-section">
+                      <button class="btn btn-sm purple" (click)="addProductToCart(side)">ADD TO ORDER</button>
+                      <button class="btn btn-sm outline-black">CUSTOMIZE</button>
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+            <div class="tab-pane fade" id="drinks" role="tabpanel" aria-labelledby="drinks-tab">
+              <h3>Drinks Section</h3>
+              <ng-container *ngFor="let drink of drinks">
+                <div class="card">
+                  <img class="card-img-top" src="{{ drink.image }}" alt="Card image cap">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ drink.title }}</h5>
+                    <p class="card-text">{{ drink.description }}</p>
+                  </div>
+                  <div class="card-footer">
+                    <h6 class="card-text price">Price: {{ drink.displayPrice | currency}}</h6>
+                    <div class="product-cta-section">
+                      <button class="btn btn-sm purple" (click)="addProductToCart(drink)">ADD TO ORDER</button>
+                      <button class="btn btn-sm outline-black">CUSTOMIZE</button>
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+
+        <div class="cart-section col-sm-4">
+          <div class="title-price-total-section">
+            <h5 class="title-price-total-section__title">CART SECTION</h5>
+            <h4 *ngIf="cartHasProducts" class="title-price-total-section__cart-price-total">{{cartPriceTotal$ | async | currency}}</h4>
+          </div>
+          <hr/>
+          <ng-container *ngIf="cartHasProducts else noItemsInCart">
+            <div class="remove-all-items" (click)="removeAllItems()"><h6>Remove all items</h6></div>
+            <ng-container *ngFor="let cartItem of cartItems; index as i">
+              <div class="cart-items">
+                <h6 class="cart-item-title">{{ i + 1 }}. {{ cartItem.title }}</h6>
+                <span class="cart-item-display-price">
+                  <span>{{ cartItem.displayPrice | currency }}</span>
+                </span>
+                <div class="quantity-section">
+                  <p class="quantity-count">Quantity: {{ cartItem.quantity }}</p>
+                </div>
+                <div class="description-section">
+                  <a
+                    data-toggle="collapse"
+                    [attr.href]="'#collapseDescription' + i + 1"
+                    aria-expanded="false"
+                    [attr.aria-controls]="'collapseDescription' + i + 1">
+                    <p>Description</p>
+                  </a>
+                  <span class="under-caret">
+                    <img src="/assets/images/under_caret.png" alt="under caret">
+                  </span>
+                </div>
+                <div class="remove-section" (click)="removeCartItem(cartItem.sku, i)">
+                  <span class="remove-cta"></span>
+                </div>
+                <div class="collapse" [attr.id]="'collapseDescription' + i + 1">
+                  <p>{{ cartItem.description }}</p>
+                </div>
+              </div>
+            </ng-container>
+          </ng-container>
+          <ng-template #noItemsInCart>
+            <div class="no-items-in-cart-design"></div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>

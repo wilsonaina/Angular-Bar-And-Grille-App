@@ -1,0 +1,243 @@
+.main {
+  color: #ffffff;
+
+  .hero-section {
+    background-image: url('/assets/images/skillet-steak-img1.jpeg');
+    background-position: center;
+    background-size: cover;
+    float: left;
+    width: 100%;
+    height: 180px;
+    border-bottom: 2px solid #dac866;
+  }
+
+  .main-section {
+    float: left;
+    width: 100%;
+    background-color: #292929;
+    padding-top: 30px;
+
+    .alert-section {
+      float: left;
+      width: 100%;
+
+      .alert {
+        padding-left: 5em;
+        padding-right: 5em;
+      }
+    }
+
+    .nav-section {
+      ul {
+        li {
+          margin-right: 20px;
+          a {
+            color: #ffffff;
+            font-size: 20px;
+            &.active {
+              background-color: #a38c16;
+              font-weight: bold;
+            }
+          }
+        }
+      }
+
+      .tab-content {
+        .card {
+          width: 250px;
+          float: left;
+          margin-right: 30px;
+          margin-bottom: 20px;
+          max-height: 390px;
+          height: 390px;
+          .card-body {
+            .card-text {
+              font-size: 14px;
+            }
+          }
+
+          .card-footer {
+            .price {
+              text-align: center;
+              color: #e10000;
+            }
+            .product-cta-section {
+              display: flex;
+              justify-content: space-between;
+              margin-bottom: 10px;
+            }
+          }
+        }
+      }
+
+      .cart-badge-section {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 50px;
+        height: 50px;
+        background-image: url(/assets/images/cart-icon.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        display: block;
+        margin-right: 15px;
+
+        span {
+          position: absolute;
+          top: 0;
+          right: 0;
+          background-color: #2b9c2b;
+          width: 20px;
+          height: 20px;
+          text-align: center;
+          border-radius: 10px;
+          font-size: 13px;
+        }
+      }
+    }
+
+    .cart-section {
+      hr {
+        float: left;
+        width: 100%;
+      }
+
+      .no-items-in-cart-design {
+        background-image: url("/assets/images/lets_add_to_cart-gold.png");
+        width: 100%;
+        height: 400px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        margin-top: 30px;
+        float: left;
+      }
+
+      .title-price-total-section {
+        display: block;
+        float: left;
+        width: 100%;
+
+        &__title {
+          font-size: 20px;
+          float: left;
+        }
+
+        &__cart-price-total {
+          float: right;
+        }
+      }
+
+
+
+      .cart-items {
+        float: left;
+        width: 100%;
+        padding: 10px;
+
+        .cart-item-title {
+          float: left;
+        }
+
+        .collapse {
+          max-height: 89px;
+          float: left;
+        }
+
+        span.cart-item-display-price {
+          float: right;
+          span {
+            color: #ffffff;
+            font-weight: 100;
+          }
+        }
+
+        &:nth-of-type(even) {
+          background-color: #1e1e1e;
+          padding: 10px;
+          border-radius: 7px;
+        }
+
+        .remove-section {
+          float: right;
+          .remove-cta {
+            display: block;
+            background-image: url(/assets/images/red_cancel.png);
+            width: 30px;
+            height: 30px;
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            cursor: pointer;
+          }
+        }
+
+        .quantity-section {
+          float: left;
+          width: 100%;
+
+          .quantity-count {
+
+          }
+        }
+      }
+      .description-section {
+        width: 80%;
+        float: left;
+        .under-caret {
+          width: 10px;
+          display: block;
+          float: left;
+          margin-left: 5px;
+          img {
+            width: 100%;
+          }
+        }
+
+        a {
+          float: left;
+          text-decoration: none;
+          p {
+            color: #a48c16;
+          }
+        }
+      }
+
+      .remove-all-items {
+        text-align: center;
+        background-color: #711a1a;
+        padding: 8px;
+        border-radius: 6px;
+        margin-bottom: 15px;
+        cursor: pointer;
+        float: left;
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 43.750em) {
+  /*----- Medium | 700px -----*/
+
+}
+
+
+/*-------------------------------------------------------
+    Media Queries Implementation For Nike Site
+--------------------------------------------------------- */
+
+/*-------------------------------------------
+    Media Queries and Screen Sizes
+
+narrow:     em(320); // 20em, 320px
+small:      em(480); // 30em, 480px
+medium:     em(700); // 43.750em, 700px
+ipad:       em(768); // 48em, 768px
+large:      em(960); // 60em, 960px
+wide:       em(1080); // 67.500em, 1080px
+wider:      em(1200); // 75em, 1200px
+huge:       em(1600); // 100em, 1600px
+
+-------------------------------------------*/
